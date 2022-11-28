@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -29,60 +30,65 @@ const Header = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
+              <Link>Services</Link>
             </li>
 
             <li>
-              <a>Item 3</a>
+              <Link>My Reviews</Link>
+            </li>
+
+            <li>
+              <Link>Add Service</Link>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Helix Photography</a>
+        <Link className="btn btn-ghost normal-case text-xl  ">
+          Helix Photography
+        </Link>
       </div>
       {/* for desktop view */}
-      <div className="  bg-amber-300 w-full flex justify-center pl-48    ">
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 2</a>
-            </li>
+      <div className="rounded bg-amber-300 flex justify-end w-full ml-24">
+        <div className="  w-full flex justify-center     ">
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal p-0">
+              <li>
+                <Link>Services</Link>
+              </li>
+              <li>
+                <Link>My Reviews</Link>
+              </li>
 
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+              <li>
+                <Link>Add Service</Link>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-end w-full bg-orange-100">
-        <div className="dropdown dropdown-end ">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img src="https://placeimg.com/80/80/people" />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
+        <div className="flex justify-end w-full">
+          <div className="dropdown dropdown-end ">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src="https://placeimg.com/80/80/people" />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </Link>
+              </li>
+              <li>
+                <Link>Settings</Link>
+              </li>
+              <li>
+                <Link>Logout</Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
