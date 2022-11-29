@@ -42,7 +42,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <Link className="btn btn-ghost normal-case text-2xl  ">
+        <Link className="p-3 rounded-xl bg-white normal-case text-2xl font-bold  ">
           Helix Photography
         </Link>
       </div>

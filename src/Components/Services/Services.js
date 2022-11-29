@@ -46,11 +46,8 @@ const Services = () => {
         <div className="bg-slate-100 border  p-16  mx-5  rounded">
           <div className=" grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-10 ">
             {Dataservice.map((serv) => (
-              <PhotoProvider>
-                <ServiceCard
-                  key={serv.service_id}
-                  servicedata={serv}
-                ></ServiceCard>
+              <PhotoProvider key={serv.service_id}>
+                <ServiceCard servicedata={serv}></ServiceCard>
               </PhotoProvider>
             ))}
           </div>
