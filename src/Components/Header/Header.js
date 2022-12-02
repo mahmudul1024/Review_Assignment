@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import logimage from "../../assets/images/banner/1.jpg";
+import imgdefault from "../../assets/images/banner/Data/image.jpg";
+import { authContext } from "../Authentication/AuthProvideContext";
 
 const Header = () => {
+  const { user, logout } = useContext(authContext);
+
+  console.log("i am header", user);
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {})
+      .catch((er) => console.er(er));
+  };
+
   return (
     <div className="navbar bg-green-300   h-28  sticky top-0 z-10">
       <div className="navbar-start">
@@ -30,11 +43,11 @@ const Header = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link>Services</Link>
+              <Link to="/">Services</Link>
             </li>
 
             <li>
-              <Link>My Reviews</Link>
+              <Link to="/myreview">My Reviews</Link>
             </li>
 
             <li>
@@ -52,10 +65,10 @@ const Header = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
               <li>
-                <Link>Services</Link>
+                <Link to="/">Services</Link>
               </li>
               <li>
-                <Link>My Reviews</Link>
+                <Link to="/myreview">My Reviews</Link>
               </li>
 
               <li>
@@ -65,10 +78,45 @@ const Header = () => {
           </div>
         </div>
         <div className="flex justify-end w-full">
-          <div className="dropdown dropdown-end ">
+          {user?.uid ? (
+            <>
+              <div className="dropdown dropdown-end ">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user?.photoURL} />
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <Link className="justify-between">
+                      Profile
+                      <span className="badge">New</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link>Settings</Link>
+                  </li>
+                  <li>
+                    <Link onClick={handleLogout}>Logout</Link>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : (
+            <>
+              <button className="text-xl p-3 ">
+                <Link to="/login">Login</Link>
+              </button>{" "}
+            </>
+          )}
+          {/* <button className="text-xl p-3 ">Login</button>  */}
+          {/* <div className="dropdown dropdown-end ">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src="https://placeimg.com/80/80/people" />
+                <img src={logimage} />
               </div>
             </label>
             <ul
@@ -88,7 +136,7 @@ const Header = () => {
                 <Link>Logout</Link>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
