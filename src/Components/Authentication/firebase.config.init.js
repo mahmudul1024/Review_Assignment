@@ -1,16 +1,16 @@
 import { initializeApp } from "firebase/app";
 const firebaseConfig = {
-  apiKey: "AIzaSyDo3M9XAj8x17MhDzymaFVpSf7O9ZbdX6Q",
+  apiKey: process.env.REACT_APP_apiKey,
 
-  authDomain: "helixreview-29710.firebaseapp.com",
+  authDomain: process.env.REACT_APP_authDomain,
 
-  projectId: "helixreview-29710",
+  projectId: process.env.REACT_APP_projectId,
 
-  storageBucket: "helixreview-29710.appspot.com",
+  storageBucket: process.env.REACT_APP_storageBucket,
 
-  messagingSenderId: "88847983463",
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
 
-  appId: "1:88847983463:web:bf84ef49b19a1d2a10c5c2",
+  appId: process.env.REACT_APP_appId,
 };
 
 const app = initializeApp(firebaseConfig);

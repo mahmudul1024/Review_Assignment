@@ -17,7 +17,7 @@ const NewReview = () => {
 
     const review = { name, email, topic, areatext, photo };
 
-    fetch("http://localhost:5000/newReview", {
+    fetch("https://review-server-three.vercel.app/newReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,6 +36,8 @@ const NewReview = () => {
               <input
                 type="text"
                 name="name"
+                defaultValue={user?.displayName}
+                readOnly
                 required
                 placeholder="Your Name"
                 className="input w-full max-w-xs bg-slate-300 mr-3"
@@ -44,6 +46,8 @@ const NewReview = () => {
                 type="email"
                 required
                 name="email"
+                defaultValue={user?.email}
+                readOnly
                 placeholder="Type your email here"
                 className="input w-full max-w-xs my-3 bg-slate-300"
               />

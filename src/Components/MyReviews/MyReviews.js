@@ -8,7 +8,7 @@ const MyReviews = () => {
   const [oldreview, setOldreview] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/MyReview", {
+    fetch("https://review-server-three.vercel.app/MyReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",
