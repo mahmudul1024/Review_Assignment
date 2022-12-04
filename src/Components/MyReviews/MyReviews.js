@@ -6,6 +6,7 @@ import MyreviewSingle from "./MyreviewSingle";
 const MyReviews = () => {
   const { user } = useContext(authContext);
   const [oldreview, setOldreview] = useState([]);
+  const [deleterev, setDeleterev] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/MyReview", {
@@ -17,7 +18,7 @@ const MyReviews = () => {
     })
       .then((res) => res.json())
       .then((data) => setOldreview(data));
-  }, [oldreview]);
+  }, []);
 
   console.log(oldreview);
 
@@ -26,7 +27,9 @@ const MyReviews = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          alert("Review deleted successfully");
+          // alert("Review deleted successfully");
+          const remainingReview = oldreview.filter((old) => old._id !== id);
+          setOldreview(remainingReview);
         }
       });
   };

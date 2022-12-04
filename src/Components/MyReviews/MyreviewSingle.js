@@ -1,8 +1,34 @@
 import React from "react";
+import { useContext } from "react";
 import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
+import { authContext } from "../Authentication/AuthProvideContext";
 
 const MyreviewSingle = ({ review, handleTrash }) => {
+  const { user } = useContext(authContext);
+  const handleEdit = (id) => {
+    console.log(id);
+  };
+  console.log(user);
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const topic = form.topic.value;
+    const areatext = form.areatext.value;
+    const id = review._id;
+
+    console.log(topic, areatext, id);
+
+    fetch(`http://localhost:5000/edit/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ change: { topic, areatext, id } }),
+    });
+  };
+
   return (
     <div className="mt-12  bg-yellow-200 mx-10 rounded-lg ">
       <div className="mb-2 shadow-lg rounded-t-8xl rounded-b-5xl overflow-hidden">
@@ -101,12 +127,74 @@ const MyreviewSingle = ({ review, handleTrash }) => {
               </p>
             </div>
             <div className="w-full md:w-1/3 text-right">
-              <p className="text-red-500  text-3xl flex justify-items-start ">
+              <p className="text-slate-500  text-3xl flex justify-items-start ">
                 <BsTrash
                   onClick={() => handleTrash(review?._id)}
                   className="mr-10"
                 ></BsTrash>
-                <TiEdit className="mr-10"></TiEdit>
+                {/* modal start */}
+                <div>
+                  <label for="my-modal" class="modal-button">
+                    <TiEdit
+                      onClick={() => handleEdit(review?._id)}
+                      className="mr-10"
+                    ></TiEdit>
+                  </label>
+
+                  <input type="checkbox" id="my-modal" class="modal-toggle" />
+                  <div class="modal flex justify-center align-middle">
+                    <div class="modal-box">
+                      <form
+                        onSubmit={handleChange}
+                        className="flex flex-col justify-start   "
+                      >
+                        <input
+                          type="text"
+                          name="name"
+                          defaultValue={review?.name}
+                          required
+                          readOnly
+                          placeholder="Your Name"
+                          className="input w-full max-w-xs bg-slate-300 mr-3"
+                        />
+                        <input
+                          type="email"
+                          required
+                          name="email"
+                          defaultValue={review?.email}
+                          readOnly
+                          placeholder="Type your email here"
+                          className="input w-full max-w-xs my-3 bg-slate-300"
+                        />
+
+                        <input
+                          type="text"
+                          name="topic"
+                          defaultValue={review?.topic}
+                          placeholder="topic text"
+                          className="input input-bordered input-lg w-full max-w-xs"
+                        />
+
+                        <textarea
+                          className="textarea textarea-warning my-3  w-full "
+                          placeholder="Your review description"
+                          required
+                          name="areatext"
+                          defaultValue={review?.areatext}
+                        ></textarea>
+
+                        <button className="btn btn-success w-1/2 md:w-1/4 ">
+                          Change Confirm
+                        </button>
+                      </form>
+                      <div class="modal-action">
+                        <label for="my-modal" class="btn">
+                          Close
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </p>
             </div>
           </div>
