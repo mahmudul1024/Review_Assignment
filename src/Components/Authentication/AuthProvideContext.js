@@ -19,6 +19,7 @@ const AuthProvideContext = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const Googlelogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, provider);
   };
 
@@ -55,6 +56,7 @@ const AuthProvideContext = ({ children }) => {
     createUser,
     login,
     Googlelogin,
+    setLoading,
   };
 
   return (

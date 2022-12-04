@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../Authentication/AuthProvideContext";
 
 const NewReview = () => {
   const { user } = useContext(authContext);
+  let navigate = useNavigate();
 
   const handleReview = (event) => {
     event.preventDefault();
@@ -26,6 +28,11 @@ const NewReview = () => {
     });
   };
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+    navigate("/myreview");
+  };
+
   return (
     <div className="">
       {user?.uid ? (
@@ -37,7 +44,6 @@ const NewReview = () => {
                 type="text"
                 name="name"
                 defaultValue={user?.displayName}
-                readOnly
                 required
                 placeholder="Your Name"
                 className="input w-full max-w-xs bg-slate-300 mr-3"
@@ -73,7 +79,7 @@ const NewReview = () => {
       ) : (
         <>
           <h2 className="text-4xl text-center py-10">
-            Please Login to leave a Review
+            Please <Link onClick={handleLogin}>Login</Link> to leave a Review
           </h2>
         </>
       )}

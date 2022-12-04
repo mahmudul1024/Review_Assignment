@@ -1,11 +1,15 @@
 import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../Authentication/AuthProvideContext";
 
 const Login = () => {
-  const { user, setUser, login } = useContext(authContext);
+  const { user, setUser, login, loading, setLoading } = useContext(authContext);
   const { Googlelogin } = useContext(authContext);
+
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location?.state?.from?.pathname;
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -16,16 +20,31 @@ const Login = () => {
     login(email, password)
       .then((result) => {
         const user = result.user;
+        if (user?.uid) {
+          navigate(from, { replace: true });
+        } else {
+          alert("Varify your email first");
+        }
         console.log("login done", user);
       })
       .catch((er) => console.error(er));
   };
-  const handleGoogle = () => {
+  const handleGoogle = (event) => {
     Googlelogin()
       .then((result) => {
         const user = result.user;
         setUser(user);
         console.log(user);
+        if (loading) {
+          alert("loding");
+        }
+
+        if (user?.uid) {
+          navigate(from, { replace: true });
+        } else {
+          alert("Varify your email first");
+        }
+        setLoading(false);
       })
       .catch((err) => console.error(err));
   };

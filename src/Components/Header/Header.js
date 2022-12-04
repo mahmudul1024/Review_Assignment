@@ -61,19 +61,25 @@ const Header = () => {
       </div>
       {/* for desktop view */}
       <div className="rounded bg-amber-300 flex justify-end w-full ml-24">
-        <div className="  w-full flex justify-center     ">
+        <div className="  w-full flex  justify-start     ">
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal p-0">
               <li>
                 <Link to="/">Services</Link>
               </li>
-              <li>
-                <Link to="/myreview">My Reviews</Link>
-              </li>
+              {user?.uid ? (
+                <>
+                  <li>
+                    <Link to="/myreview">My Reviews</Link>
+                  </li>
 
-              <li>
-                <Link>Add Service</Link>
-              </li>
+                  <li>
+                    <Link>Add Service</Link>
+                  </li>
+                </>
+              ) : (
+                <> </>
+              )}
             </ul>
           </div>
         </div>
