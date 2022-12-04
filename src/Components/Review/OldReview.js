@@ -4,12 +4,12 @@ import OldReviewSingle from "./OldReviewSingle";
 const OldReview = () => {
   const [oldreview, setOldreview] = useState([]);
   useEffect(() => {
-    fetch("https://review-server-three.vercel.app/oldReview")
+    fetch("http://localhost:5000/oldReview")
       .then((res) => res.json())
       .then((data) => setOldreview(data));
   }, []);
 
-  console.log(oldreview);
+  // console.log(oldreview);
 
   return (
     <div>

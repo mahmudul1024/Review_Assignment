@@ -8,7 +8,7 @@ const MyReviews = () => {
   const [oldreview, setOldreview] = useState([]);
 
   useEffect(() => {
-    fetch("https://review-server-three.vercel.app/MyReview", {
+    fetch("http://localhost:5000/MyReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -17,12 +17,28 @@ const MyReviews = () => {
     })
       .then((res) => res.json())
       .then((data) => setOldreview(data));
-  }, []);
+  }, [oldreview]);
+
+  console.log(oldreview);
+
+  const handleTrash = (id) => {
+    fetch(`http://localhost:5000/delete/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          alert("Review deleted successfully");
+        }
+      });
+  };
 
   return (
     <div>
       {oldreview.map((old) => (
-        <MyreviewSingle key={old._id} review={old}></MyreviewSingle>
+        <MyreviewSingle
+          handleTrash={handleTrash}
+          key={old._id}
+          review={old}
+        ></MyreviewSingle>
       ))}
     </div>
   );

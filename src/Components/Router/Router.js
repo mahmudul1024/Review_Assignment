@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
         path: "/details/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`https://review-server-three.vercel.app/details/${params.id}`),
+          fetch(`http://localhost:5000/details/${params.id}`),
       },
     ],
   },

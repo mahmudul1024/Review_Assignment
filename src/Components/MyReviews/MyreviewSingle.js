@@ -1,6 +1,8 @@
 import React from "react";
+import { BsTrash } from "react-icons/bs";
+import { TiEdit } from "react-icons/ti";
 
-const MyreviewSingle = ({ review }) => {
+const MyreviewSingle = ({ review, handleTrash }) => {
   return (
     <div className="mt-12  bg-yellow-200 mx-10 rounded-lg ">
       <div className="mb-2 shadow-lg rounded-t-8xl rounded-b-5xl overflow-hidden">
@@ -99,7 +101,13 @@ const MyreviewSingle = ({ review }) => {
               </p>
             </div>
             <div className="w-full md:w-1/3 text-right">
-              <p className="mb-8 text-sm text-gray-300">Added 2 months ago</p>
+              <p className="text-red-500  text-3xl flex justify-items-start ">
+                <BsTrash
+                  onClick={() => handleTrash(review?._id)}
+                  className="mr-10"
+                ></BsTrash>
+                <TiEdit className="mr-10"></TiEdit>
+              </p>
             </div>
           </div>
         </div>
