@@ -4,30 +4,12 @@ import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 import { authContext } from "../Authentication/AuthProvideContext";
 
-const MyreviewSingle = ({ review, handleTrash }) => {
+const MyreviewSingle = ({ review, handleTrash, handleChange }) => {
   const { user } = useContext(authContext);
   const handleEdit = (id) => {
     console.log(id);
   };
   console.log(user);
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const topic = form.topic.value;
-    const areatext = form.areatext.value;
-    const id = review._id;
-
-    console.log(topic, areatext, id);
-
-    fetch(`http://localhost:5000/edit/${id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ change: { topic, areatext, id } }),
-    });
-  };
 
   return (
     <div className="mt-12  bg-yellow-200 mx-10 rounded-lg ">
@@ -134,18 +116,24 @@ const MyreviewSingle = ({ review, handleTrash }) => {
                 ></BsTrash>
                 {/* modal start */}
                 <div>
-                  <label for="my-modal" class="modal-button">
+                  <label htmlFor="my-modal" className="modal-button">
                     <TiEdit
                       onClick={() => handleEdit(review?._id)}
                       className="mr-10"
                     ></TiEdit>
                   </label>
 
-                  <input type="checkbox" id="my-modal" class="modal-toggle" />
-                  <div class="modal flex justify-center align-middle">
-                    <div class="modal-box">
+                  <input
+                    type="checkbox"
+                    id="my-modal"
+                    className="modal-toggle"
+                  />
+                  <div className="modal flex justify-center align-middle">
+                    <div className="modal-box">
                       <form
-                        onSubmit={handleChange}
+                        onSubmit={(event) => {
+                          handleChange(event, review._id);
+                        }}
                         className="flex flex-col justify-start   "
                       >
                         <input
@@ -187,8 +175,8 @@ const MyreviewSingle = ({ review, handleTrash }) => {
                           Change Confirm
                         </button>
                       </form>
-                      <div class="modal-action">
-                        <label for="my-modal" class="btn">
+                      <div className="modal-action">
+                        <label htmlFor="my-modal" className="btn">
                           Close
                         </label>
                       </div>

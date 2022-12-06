@@ -10,7 +10,7 @@ import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 const Section2 = () => {
   const [oldreview, setOldreview] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/oldReview")
+    fetch("https://review-server-three.vercel.app/oldReview")
       .then((res) => res.json())
       .then((data) => setOldreview(data));
   }, []);
@@ -38,31 +38,31 @@ const Section2 = () => {
     >
       {oldreview.map((old) => {
         return (
-          <SplideSlide>
-            <div class="bg-slate-200  w-80 shadow-lg mx-auto rounded-xl p-10 ">
-              <p class="text-gray-600 text-white ">
-                <span class="  text-2xl  font-bold text-indigo-500">
+          <SplideSlide key={old._id}>
+            <div className="bg-slate-200  w-80 shadow-lg mx-auto rounded-xl p-10 ">
+              <p className="text-gray-600 text-white ">
+                <span className="  text-2xl  font-bold text-indigo-500">
                   {old.topic}
                 </span>
               </p>
-              <p class="text-gray-600 text-white">
-                <span class="text-lg font-bold text-indigo-500">“</span>
+              <p className="text-gray-600 text-white">
+                <span className="text-lg font-bold text-indigo-500">“</span>
                 {old.areatext}
-                <span class="text-lg font-bold text-indigo-500">”</span>
+                <span className="text-lg font-bold text-indigo-500">”</span>
               </p>
-              <div class="flex items-center mt-4">
-                <a href="#" class="relative block">
+              <div className="flex items-center mt-4">
+                <a href="#" className="relative block">
                   <img
                     alt="profil"
                     src={old.photo}
-                    class="mx-auto object-cover rounded-full h-10 w-10 "
+                    className="mx-auto object-cover rounded-full h-10 w-10 "
                   />
                 </a>
-                <div class="flex flex-col justify-between ml-2">
-                  <span class="text-sm font-semibold text-indigo-500">
+                <div className="flex flex-col justify-between ml-2">
+                  <span className="text-sm font-semibold text-indigo-500">
                     {old.name}
                   </span>
-                  <span class="flex items-center text-xs dark:text-gray-400">
+                  <span className="flex items-center text-xs dark:text-gray-400">
                     {old.email}
                   </span>
                 </div>

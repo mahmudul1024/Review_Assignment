@@ -7,9 +7,10 @@ const MyReviews = () => {
   const { user } = useContext(authContext);
   const [oldreview, setOldreview] = useState([]);
   const [deleterev, setDeleterev] = useState(false);
+  let [Len, setLen] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/MyReview", {
+    fetch("https://review-server-three.vercel.app/MyReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -18,12 +19,12 @@ const MyReviews = () => {
     })
       .then((res) => res.json())
       .then((data) => setOldreview(data));
-  }, []);
+  }, [Len]);
 
   console.log(oldreview);
 
   const handleTrash = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`)
+    fetch(`https://review-server-three.vercel.app/delete/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -34,6 +35,32 @@ const MyReviews = () => {
       });
   };
 
+  const handleChange = (event, id) => {
+    event.preventDefault();
+    const form = event.target;
+    const topic = form.topic.value;
+    const areatext = form.areatext.value;
+    let topicLength = areatext.length;
+    console.log(topicLength);
+
+    // console.log(event, id);
+
+    // console.log("ami ekhane asi", topic, areatext, id);
+
+    fetch(`https://review-server-three.vercel.app/edit/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ change: { topic, areatext, id } }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("ami changed data", data);
+        setLen(topicLength);
+      });
+  };
+
   return (
     <div>
       {oldreview.map((old) => (
@@ -41,6 +68,7 @@ const MyReviews = () => {
           handleTrash={handleTrash}
           key={old._id}
           review={old}
+          handleChange={handleChange}
         ></MyreviewSingle>
       ))}
     </div>
