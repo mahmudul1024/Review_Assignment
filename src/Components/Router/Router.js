@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddService from "../AddService/AddService";
 import Details from "../Details/Details";
 import Home from "../Home/Home";
 import Main from "../Layout/Main";
@@ -26,6 +27,11 @@ export const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
+        path: "/addservice",
+        element: <AddService></AddService>,
+      },
+
+      {
         path: "/myreview",
         element: (
           <PrivateRoute>
@@ -37,7 +43,8 @@ export const router = createBrowserRouter([
         path: "/details/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`https://review-server-three.vercel.app/details/${params.id}`),
+          fetch(`http://localhost:5000
+/details/${params.id}`),
       },
     ],
   },

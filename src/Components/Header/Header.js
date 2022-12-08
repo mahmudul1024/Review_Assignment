@@ -7,7 +7,7 @@ import { authContext } from "../Authentication/AuthProvideContext";
 const Header = () => {
   const { user, logout } = useContext(authContext);
 
-  console.log("i am header", user);
+  // console.log("i am header", user);
 
   const handleLogout = () => {
     logout()
@@ -51,7 +51,7 @@ const Header = () => {
             </li>
 
             <li>
-              <Link>Add Service</Link>
+              <Link to="addservice">Add Service</Link>
             </li>
           </ul>
         </div>
@@ -74,7 +74,7 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <Link>Add Service</Link>
+                    <Link to="addservice">Add Service</Link>
                   </li>
                 </>
               ) : (
