@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         element: <Details></Details>,
         loader: ({ params }) =>
           fetch(`
-http://localhost:5000
+https://reviewproject-3de7c.web.app
 /details/${params.id}`),
       },
     ],

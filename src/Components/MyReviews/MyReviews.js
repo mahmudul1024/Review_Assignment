@@ -10,7 +10,7 @@ const MyReviews = () => {
   let [Len, setLen] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/MyReview", {
+    fetch("https://reviewproject-3de7c.web.app/MyReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -24,7 +24,7 @@ const MyReviews = () => {
   // console.log(oldreview);
 
   const handleTrash = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`)
+    fetch(`https://reviewproject-3de7c.web.app/delete/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -47,7 +47,7 @@ const MyReviews = () => {
 
     // console.log("ami ekhane asi", topic, areatext, id);
 
-    fetch(`http://localhost:5000/edit/${id}`, {
+    fetch(`https://reviewproject-3de7c.web.app/edit/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

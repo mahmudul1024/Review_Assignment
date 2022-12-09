@@ -8,7 +8,7 @@ import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 const Section2 = () => {
   const [oldreview, setOldreview] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/oldReview")
+    fetch("https://reviewproject-3de7c.web.app/oldReview")
       .then((res) => res.json())
       .then((data) => setOldreview(data));
   }, []);

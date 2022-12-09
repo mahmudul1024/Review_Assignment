@@ -6,7 +6,7 @@ const Services = () => {
   const [Dataservice, setDataService] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000", {
+    fetch("https://reviewproject-3de7c.web.app", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -22,7 +22,7 @@ const Services = () => {
   }, []);
 
   const handleAllService = () => {
-    fetch("http://localhost:5000", {
+    fetch("https://reviewproject-3de7c.web.app", {
       method: "POST",
       headers: {
         "content-type": "application/json",

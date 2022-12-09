@@ -10,7 +10,7 @@ const AddService = () => {
     const addservice = { topicName, topicprice, topicDesc, topicpic };
 
     // console.log(topicName, topicDesc, topicpic, topicprice);
-    fetch("http://localhost:5000/addservice", {
+    fetch("https://reviewproject-3de7c.web.app/addservice", {
       method: "POST",
       headers: {
         "content-type": "application/json",
