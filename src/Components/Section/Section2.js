@@ -13,17 +13,27 @@ const Section2 = () => {
       .then((data) => setOldreview(data));
   }, []);
 
-  // console.log(oldreview);
-
   return (
     <Splide
       options={{
         type: "loop",
-        gap: "10px",
+        gap: "1em",
         drag: "free",
-        arrows: false,
-        pagination: false,
+        arrows: true,
+        pagination: true,
         perPage: 3,
+
+        breakpoints: {
+          100: {
+            perPage: 1,
+            gap: "2em",
+          },
+          300: {
+            perPage: 1,
+            gap: "2em",
+          },
+          635: { perPage: 1, gap: "2em" },
+        },
 
         autoScroll: {
           pauseOnHover: true,
@@ -37,16 +47,16 @@ const Section2 = () => {
       {oldreview.map((old) => {
         return (
           <SplideSlide key={old._id}>
-            <div className="bg-slate-200  md:w-50 lg:w-80 w-80 shadow-lg mx-auto   rounded-xl  p-8">
+            <div className="bg-slate-200  md:w-50 lg:w-80 sm:w-80  shadow-lg    rounded-xl  p-8 h-full">
               <p className="text-gray-600 text-white ">
-                <span className="  text-2xl  font-bold text-indigo-500">
+                <span className="  md:text-2xl  font-bold text-indigo-500">
                   {old?.topic?.substring(0, 20)}
                 </span>
               </p>
               <p className="text-gray-600 text-white">
                 <span className="text-lg font-bold text-indigo-500">“</span>
-                {old?.areatext?.substring(0, 30) + "..."}
-                <span className="text-lg font-bold text-indigo-500">”</span>
+                {old?.areatext?.substring(0, 25) + "..."}
+                <span className="md:text-lg font-bold text-indigo-500">”</span>
               </p>
               <div className="flex items-center mt-4">
                 <a href="#" className="relative block">
@@ -57,23 +67,18 @@ const Section2 = () => {
                   />
                 </a>
                 <div className="flex flex-col justify-between ml-2">
-                  <span className="text-sm font-semibold text-indigo-500">
+                  <span className="md:text-sm font-semibold text-xs  text-indigo-500">
                     {old.name}
                   </span>
-                  <span className="flex items-center text-xs dark:text-gray-400">
+                  {/* <span className="flex items-center text-xs text-gray-400">
                     {old.email}
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </div>
           </SplideSlide>
         );
       })}
-
-      <div className="splide__arrows">
-        <button className="splide__arrow splide__arrow--prev">Prev</button>
-        <button className="splide__arrow splide__arrow--next">Next</button>
-      </div>
     </Splide>
   );
 };
