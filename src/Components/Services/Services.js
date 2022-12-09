@@ -6,7 +6,7 @@ const Services = () => {
   const [Dataservice, setDataService] = useState([]);
 
   useEffect(() => {
-    fetch("https://review-server-three.vercel.app", {
+    fetch("http://localhost:5000", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -22,7 +22,7 @@ const Services = () => {
   }, []);
 
   const handleAllService = () => {
-    fetch("https://review-server-three.vercel.app", {
+    fetch("http://localhost:5000", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -46,8 +46,8 @@ const Services = () => {
       {/* service card starts */}
 
       <div className="w-full">
-        <div className="bg-slate-100 border  p-16  mx-5  rounded">
-          <div className=" grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-10 ">
+        <div className="bg-slate-100 border sm:p-8  md:p-16  mx-5  rounded">
+          <div className=" grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-10  ">
             {Dataservice.map((serv) => (
               <PhotoProvider key={serv.service_id}>
                 <ServiceCard servicedata={serv}></ServiceCard>

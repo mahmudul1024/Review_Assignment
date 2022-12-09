@@ -64,10 +64,10 @@ const Header = () => {
         </Link>
       </div>
       {/* for desktop view */}
-      <div className="rounded bg-amber-300 flex justify-end w-full ml-24">
-        <div className="  w-full flex  justify-start     ">
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal p-0">
+      <div className="rounded bg-green-400 flex justify-end w-full ml-24">
+        <div className="  w-full flex  justify-start       ">
+          <div className="navbar-center hidden lg:flex ">
+            <ul className="menu menu-horizontal p-0 ">
               <li>
                 <Link to="/">Services</Link>
               </li>
