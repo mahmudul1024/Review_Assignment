@@ -7,6 +7,7 @@ import Login from "../Login/Login";
 import Register from "../Login/Register";
 import MyReviews from "../MyReviews/MyReviews";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Private_Add_service from "../Private_Add_service/Private_Add_service";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addservice",
-        element: <AddService></AddService>,
+        element: (
+          <Private_Add_service>
+            <AddService></AddService>
+          </Private_Add_service>
+        ),
       },
 
       {
@@ -43,7 +48,8 @@ export const router = createBrowserRouter([
         path: "/details/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000
+          fetch(`
+https://review-server-three.vercel.app
 /details/${params.id}`),
       },
     ],

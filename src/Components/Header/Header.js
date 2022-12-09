@@ -45,14 +45,18 @@ const Header = () => {
             <li>
               <Link to="/">Services</Link>
             </li>
-
-            <li>
-              <Link to="/myreview">My Reviews</Link>
-            </li>
-
             <li>
               <Link to="addservice">Add Service</Link>
             </li>
+            {user?.uid ? (
+              <>
+                <li>
+                  <Link to="/myreview">My Reviews</Link>
+                </li>
+              </>
+            ) : (
+              <> </>
+            )}
           </ul>
         </div>
         <Link className="p-3 rounded-xl normal-case btn text-2xl py-2 ">
@@ -67,14 +71,13 @@ const Header = () => {
               <li>
                 <Link to="/">Services</Link>
               </li>
+              <li>
+                <Link to="addservice">Add Service</Link>
+              </li>
               {user?.uid ? (
                 <>
                   <li>
                     <Link to="/myreview">My Reviews</Link>
-                  </li>
-
-                  <li>
-                    <Link to="addservice">Add Service</Link>
                   </li>
                 </>
               ) : (

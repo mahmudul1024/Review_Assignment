@@ -7,9 +7,9 @@ import { authContext } from "../Authentication/AuthProvideContext";
 const MyreviewSingle = ({ review, handleTrash, handleChange }) => {
   const { user } = useContext(authContext);
   const handleEdit = (id) => {
-    console.log(id);
+    // console.log(id);
   };
-  console.log(user);
+  // console.log(user);
 
   return (
     <div className="mt-12  bg-yellow-200 mx-10 rounded-lg ">
@@ -109,7 +109,7 @@ const MyreviewSingle = ({ review, handleTrash, handleChange }) => {
               </p>
             </div>
             <div className="w-full md:w-1/3 text-right">
-              <p className="text-slate-500  text-3xl flex justify-items-start ">
+              <div className="text-slate-500  text-3xl flex justify-items-start ">
                 <BsTrash
                   onClick={() => handleTrash(review?._id)}
                   className="mr-10"
@@ -183,7 +183,7 @@ const MyreviewSingle = ({ review, handleTrash, handleChange }) => {
                     </div>
                   </div>
                 </div>
-              </p>
+              </div>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     login(email, password)
       .then((result) => {
         const user = result.user;
@@ -25,7 +25,7 @@ const Login = () => {
         } else {
           alert("Varify your email first");
         }
-        console.log("login done", user);
+        // console.log("login done", user);
       })
       .catch((er) => console.error(er));
   };
@@ -34,7 +34,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        console.log(user);
+        // console.log(user);
         if (loading) {
           alert("loding");
         }

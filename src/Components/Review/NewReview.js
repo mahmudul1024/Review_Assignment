@@ -19,7 +19,7 @@ const NewReview = () => {
 
     const review = { name, email, topic, areatext, photo };
 
-    fetch("http://localhost:5000/newReview", {
+    fetch("https://review-server-three.vercel.app/newReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",

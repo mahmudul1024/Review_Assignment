@@ -4,7 +4,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({ servicedata }) => {
-  console.log(servicedata.title);
+  // console.log(servicedata.title);
   let serviceDescription = servicedata.description.slice(0, 50);
 
   /*
