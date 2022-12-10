@@ -10,7 +10,7 @@ const AddService = () => {
     const addservice = { topicName, topicprice, topicDesc, topicpic };
 
     // console.log(topicName, topicDesc, topicpic, topicprice);
-    fetch("https://reviewproject-3de7c.web.app/addservice", {
+    fetch("https://review-server-three.vercel.app/addservice", {
       method: "POST",
       headers: {
         "content-type": "application/json",

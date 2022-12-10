@@ -19,7 +19,7 @@ const NewReview = () => {
 
     const review = { name, email, topic, areatext, photo };
 
-    fetch("https://reviewproject-3de7c.web.app/newReview", {
+    fetch("https://review-server-three.vercel.app/newReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",

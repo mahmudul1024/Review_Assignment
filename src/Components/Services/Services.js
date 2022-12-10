@@ -6,7 +6,7 @@ const Services = () => {
   const [Dataservice, setDataService] = useState([]);
 
   useEffect(() => {
-    fetch("https://reviewproject-3de7c.web.app", {
+    fetch("https://review-server-three.vercel.app", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -22,7 +22,7 @@ const Services = () => {
   }, []);
 
   const handleAllService = () => {
-    fetch("https://reviewproject-3de7c.web.app", {
+    fetch("https://review-server-three.vercel.app", {
       method: "POST",
       headers: {
         "content-type": "application/json",

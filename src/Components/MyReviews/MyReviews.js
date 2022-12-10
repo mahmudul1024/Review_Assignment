@@ -10,7 +10,7 @@ const MyReviews = () => {
   let [Len, setLen] = useState(null);
 
   useEffect(() => {
-    fetch("https://reviewproject-3de7c.web.app/MyReview", {
+    fetch("https://review-server-three.vercel.app/MyReview", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -24,7 +24,7 @@ const MyReviews = () => {
   // console.log(oldreview);
 
   const handleTrash = (id) => {
-    fetch(`https://reviewproject-3de7c.web.app/delete/${id}`)
+    fetch(`https://review-server-three.vercel.app/delete/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -47,7 +47,7 @@ const MyReviews = () => {
 
     // console.log("ami ekhane asi", topic, areatext, id);
 
-    fetch(`https://reviewproject-3de7c.web.app/edit/${id}`, {
+    fetch(`https://review-server-three.vercel.app/edit/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         element: <Details></Details>,
         loader: ({ params }) =>
           fetch(`
-https://reviewproject-3de7c.web.app
+https://review-server-three.vercel.app
 /details/${params.id}`),
       },
     ],
